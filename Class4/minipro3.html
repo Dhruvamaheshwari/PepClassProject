@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Boxes</title>
+    <link rel="stylesheet" href="minipro3.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1> Moving Boxes</h1>
+        <p class="subtitle">Click boxes to move them!</p>
+
+        <div class="playground">
+            <div onclick="HandleColor()" id="div0" class="box box1">1</div>
+            <div onclick="HandleColor1()" id="div1" class="box box2">2</div>
+            <div onclick="HandleColor2()" id="div2" class="box box3">3</div>
+            <div onclick="HandleColor3()" id="div3" class="box box4">4</div>
+        </div>
+
+        <button onclick="resetAll()" class="reset-btn">Reset</button>
+    </div>
+
+    <script>
+        function HandleColor() {
+            document.getElementById('div0').style.transform = "translateX(80px)";
+            document.getElementById('div1').style.transform = "translate(0, -80px)";
+            document.getElementById('div2').style.transform = "translateX(80px)";
+            document.getElementById('div3').style.transform = "translate(0, -80px)";
+        }
+
+        function HandleColor1() {
+            document.getElementById('div1').style.transform = "rotate(360deg) scale(1.2)";
+            document.getElementById('div1').style.backgroundColor = "#e63946";
+        }
+
+        function HandleColor2() {
+            document.getElementById('div2').style.transform = "rotate(-360deg) scale(1.2)";
+            document.getElementById('div2').style.backgroundColor = "#2a9d8f";
+        }
+
+        function HandleColor3() {
+            document.getElementById('div2').style.backgroundColor = "#3a86ff";
+            document.getElementById('div3').style.backgroundColor = "#f4d35e";
+            document.getElementById('div2').style.transform = "translateY(-20px)";
+            document.getElementById('div3').style.transform = "translateY(-20px)";
+        }
+
+        function resetAll() {
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+                box.style.transform = "translate(0, 0)";
+                box.style.backgroundColor = "";
+            });
+        }
+    </script>
+</body>
+
+</html>

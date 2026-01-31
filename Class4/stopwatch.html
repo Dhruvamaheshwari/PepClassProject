@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="stopwatch.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Stopwatch</h1>
+
+        <div class="timer-display">
+            <span id="minutes">00</span>
+            <span class="colon">:</span>
+            <span id="seconds">00</span>
+        </div>
+
+        <div class="buttons">
+            <button onclick="HandleStart()" class="btn start">▶ Start</button>
+            <button onclick="HandleStop()" class="btn stop">⏸ Stop</button>
+            <button onclick="HandleReset()" class="btn reset">↺ Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let time = 0;
+        let count;
+        let isRunning = false;
+
+        function updateDisplay() {
+            let mins = Math.floor(time / 60);
+            let secs = time % 60;
+            document.getElementById("minutes").innerText = mins.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = secs.toString().padStart(2, '0');
+        }
+
+        function HandleStart() {
+            if (!isRunning) {
+                isRunning = true;
+                document.querySelector('.timer-display').classList.add('running');
+                count = setInterval(() => {
+                    time++;
+                    updateDisplay();
+                }, 1000);
+            }
+        }
+
+        function HandleStop() {
+            isRunning = false;
+            document.querySelector('.timer-display').classList.remove('running');
+            clearInterval(count);
+        }
+
+        function HandleReset() {
+            HandleStop();
+            time = 0;
+            updateDisplay();
+        }
+    </script>
+</body>
+
+</html>

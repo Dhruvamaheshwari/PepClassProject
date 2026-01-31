@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch api</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        table {
+            background: white;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        thead {
+            background: #667eea;
+            color: white;
+        }
+
+        tbody tr:hover {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <script>
+        // to fetch the api using the fetch function
+        fetch('https://jsonplaceholder.typicode.com/todos')
+            .then((data) => data.json())
+            .then((ans) => {
+                console.log(ans)
+                ans.map((val, ind) => {
+
+                    let tr = document.createElement('tr');
+                    tr.innerHTML = `
+                    <td><span style="color: black;">ID:</span>  ${val.id}</td> 
+                    <td><span style="color: black;">Title:</span>  ${val.title} </td>  
+                    <td><span style="color: black;">Completed:</span>  ${val.completed} </td>`
+                    document.getElementById('tbody').appendChild(tr);
+                })
+            })
+            .catch((err) => console.log(err));
+    </script>
+</body>
+
+</html>

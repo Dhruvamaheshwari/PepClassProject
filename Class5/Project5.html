@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch api</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        #search {
+            padding: 12px 15px;
+            width: 300px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+        #search:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        table {
+            background: white;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        thead {
+            background: #667eea;
+            color: white;
+        }
+        tbody tr:hover {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Search box -->
+    <input type="text" id="search" placeholder="Search by title..." oninput="HandleSearch(event)" />
+
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <script>
+        let allData = [];
+
+        // fetch data once
+        fetch('https://jsonplaceholder.typicode.com/todos')
+            .then((data) => data.json())
+            .then((ans) => {
+                allData = ans;
+                renderTable(allData);
+            })
+            .catch((err) => console.log(err));
+
+        // render table
+        function renderTable(data) {
+            const tbody = document.getElementById('tbody');
+            tbody.innerHTML = ""; // clear old rows
+
+            data.forEach((val) => {
+                let tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${val.id}</td>
+                    <td>${val.title}</td>
+                    <td>${val.completed}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function HandleSearch(e) {
+            setTimeout(() => {
+                const searchValue = e.target.value.toLowerCase();
+
+                const filteredData = allData.filter(item =>
+                    item.title.toLowerCase().includes(searchValue)
+                );
+                renderTable(filteredData);
+            }, 1000);
+        }
+    </script>
+
+</body>
+
+</html>

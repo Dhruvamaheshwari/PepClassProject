@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting System</title>
+    <link rel="stylesheet" href="votinmec.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🗳️ Voting System</h1>
+
+        <div class="voting-section">
+            <div class="vote-card bjp">
+                <h2>BJP</h2>
+                <p class="count" id="bp">0</p>
+                <button onclick="handlebjp()">Vote</button>
+            </div>
+
+            <div class="vote-card aap">
+                <h2>AAP</h2>
+                <p class="count" id="am">0</p>
+                <button onclick="handleamp()">Vote</button>
+            </div>
+
+            <div class="vote-card inc">
+                <h2>INC</h2>
+                <p class="count" id="co">0</p>
+                <button onclick="handlecon()">Vote</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let Bcount = 0;
+        function handlebjp() {
+            Bcount++;
+            document.getElementById('bp').innerText = Bcount;
+        }
+
+        let Acount = 0;
+        function handleamp() {
+            Acount++;
+            document.getElementById('am').innerText = Acount;
+        }
+
+        let Ccount = 0;
+        function handlecon() {
+            Ccount++;
+            document.getElementById('co').innerText = Ccount;
+        }
+    </script>
+</body>
+
+</html>

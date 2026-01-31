@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Boxes</title>
+    <link rel="stylesheet" href="minipro2.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎨 Color Boxes</h1>
+        <p class="subtitle">Click any box to change colors!</p>
+
+        <div class="boxes">
+            <div onclick="HandleColor()" id="div0" class="box"></div>
+            <div onclick="HandleColor1()" id="div1" class="box"></div>
+            <div onclick="HandleColor2()" id="div2" class="box"></div>
+            <div onclick="HandleColor3()" id="div3" class="box"></div>
+        </div>
+
+        <button onclick="resetColors()" class="reset-btn">Reset</button>
+    </div>
+
+    <script>
+        function animateBox(id) {
+            const box = document.getElementById(id);
+            box.classList.add('pop');
+            setTimeout(() => box.classList.remove('pop'), 300);
+        }
+
+        function HandleColor() {
+            document.getElementById('div0').style.backgroundColor = "#ff6b35";
+            document.getElementById('div1').style.backgroundColor = "#e63946";
+            document.getElementById('div2').style.backgroundColor = "#f4d35e";
+            document.getElementById('div3').style.backgroundColor = "#3a86ff";
+            ['div0', 'div1', 'div2', 'div3'].forEach(animateBox);
+        }
+
+        function HandleColor1() {
+            document.getElementById('div0').style.backgroundColor = "#e63946";
+            document.getElementById('div1').style.backgroundColor = "#ff6b35";
+            animateBox('div0'); animateBox('div1');
+        }
+
+        function HandleColor2() {
+            document.getElementById('div1').style.backgroundColor = "#f4d35e";
+            document.getElementById('div2').style.backgroundColor = "#e63946";
+            animateBox('div1'); animateBox('div2');
+        }
+
+        function HandleColor3() {
+            document.getElementById('div2').style.backgroundColor = "#3a86ff";
+            document.getElementById('div3').style.backgroundColor = "#f4d35e";
+            animateBox('div2'); animateBox('div3');
+        }
+
+        function resetColors() {
+            ['div0', 'div1', 'div2', 'div3'].forEach(id => {
+                document.getElementById(id).style.backgroundColor = "#e0e0e0";
+                animateBox(id);
+            });
+        }
+    </script>
+</body>
+
+</html>

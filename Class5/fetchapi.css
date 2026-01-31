@@ -1,0 +1,15 @@
+.task1{
+    background-color: rgb(117, 66, 91);
+    padding: 12px;
+    margin: 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 300px;
+    height: 195px;
+    color: antiquewhite;
+}
+
+body{
+    background-color: rgb(60, 39, 25);
+}

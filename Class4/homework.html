@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="homework.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1> Task Manager</h1>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label>Date</label>
+                <input type="date" id="date">
+            </div>
+            <div class="input-group">
+                <label>Task</label>
+                <input type="text" id="task" placeholder="Enter task...">
+            </div>
+            <div class="input-group">
+                <label>Priority</label>
+                <select id="priority">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+            <button onclick="HandleAdd()" class="add-btn">+ Add Task</button>
+        </div>
+
+        <div class="tasks-container">
+            <div class="task-section">
+                <h2>Pending Tasks</h2>
+                <div id="div1"></div>
+            </div>
+
+            <div class="task-section done-section">
+                <h2> Completed Tasks</h2>
+                <div id="div2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function HandleAdd() {
+            let date = document.getElementById('date').value;
+            let task = document.getElementById('task').value;
+            let priority = document.getElementById('priority').value;
+
+            if (!task.trim()) {
+                alert('Please enter a task!');
+                return;
+            }
+
+            let div = document.createElement('div');
+            div.className = 'task-item ' + priority.toLowerCase();
+
+            div.innerHTML = `
+                <span class="task-date">${date || 'No date'}</span>
+                <span class="task-text">${task}</span>
+                <span class="task-priority ${priority.toLowerCase()}">${priority}</span>
+                <input type="checkbox" onclick="HandleDone(this, '${date}', '${task}', '${priority}')" class="checkbox">
+            `;
+
+            document.getElementById('div1').appendChild(div);
+
+            // Clear inputs
+            document.getElementById('task').value = '';
+
+            // Animation
+            setTimeout(() => div.classList.add('show'), 10);
+        }
+
+        function HandleDone(checkbox, date, task, priority) {
+            checkbox.parentElement.classList.add('removing');
+
+            setTimeout(() => {
+                checkbox.parentElement.remove();
+
+                let div = document.createElement('div');
+                div.className = 'task-item done';
+                div.innerHTML = `
+                    <span class="task-date">${date || 'No date'}</span>
+                    <span class="task-text">${task}</span>
+                    <span class="task-priority">${priority}</span>
+                `;
+
+                document.getElementById('div2').appendChild(div);
+                setTimeout(() => div.classList.add('show'), 10);
+            }, 300);
+        }
+    </script>
+</body>
+
+</html>

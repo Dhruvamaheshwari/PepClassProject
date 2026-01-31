@@ -1,0 +1,47 @@
+/** @format */
+
+.nav {
+  margin: 15px;
+  padding: 10px;
+  display: flex;
+  background-color: cadetblue;
+  width: 95%;
+  border-radius: 20px;
+  gap: 25%;
+  justify-content: space-around;
+}
+
+#logo {
+  font-size: large;
+  font-weight: bold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+a {
+  padding-top: 20px;
+}
+
+#li1 {
+  font-size: x-large;
+  font-weight: bold;
+  color: coral;
+}
+
+#li2 {
+  font-size: x-large;
+  font-weight: bold;
+  color: coral;
+}
+
+#li3 {
+  font-size: x-large;
+  font-weight: bold;
+  color: coral;
+}
+
+div {
+  padding-left: 40px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding: 20px;
+}
+

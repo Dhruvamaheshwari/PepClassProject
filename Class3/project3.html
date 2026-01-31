@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="project3.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title"> Task Manager</h1>
+        <div class="input-wrapper">
+            <input type="text" id="tasklist" class="task-input" placeholder="Enter your task...">
+            <button onclick="addTask()" class="add-btn">Add Task</button>
+        </div>
+        <div id="addDiv" class="task-list"></div>
+    </div>
+
+    <script>
+        function addTask() {
+            const tasktext = document.getElementById('tasklist').value;
+
+            if (tasktext.trim() === "") {
+                alert("Please enter a task!");
+                return;
+            }
+
+            const div = document.createElement('div');
+            div.className = 'task-item';
+            div.innerHTML = `
+                <span class="task-text">${tasktext}</span>
+                <button onclick="HandleDelete(this)" class="delete-btn">🗑️ Delete</button>`;
+
+            document.getElementById('addDiv').appendChild(div);
+            document.getElementById('tasklist').value = "";
+
+            // Trigger animation
+            setTimeout(() => {
+                div.classList.add('show');
+            }, 10);
+        }
+
+        function HandleDelete(b) {
+            const taskItem = b.parentElement;
+            taskItem.classList.add('removing');
+            setTimeout(() => {
+                taskItem.remove();
+            }, 300);
+        }
+    </script>
+
+</body>
+
+</html>

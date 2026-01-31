@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Change</title>
+    <link rel="stylesheet" href="colorchange.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Color Changer</h2>
+        <div id="div1" class="box" onclick="HandleColor()">Click Me</div>
+    </div>
+
+    <script>
+        function HandleColor() {
+            let div = document.getElementById('div1');
+            setTimeout(() => {
+                div.style.backgroundColor = "#e74c3c";
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>
