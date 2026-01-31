@@ -6,7 +6,7 @@ A collection of HTML, CSS, and JavaScript projects created during my programming
 
 ## 🌐 Live Demo
 
-[View Portfolio](https://yourusername.github.io/repository-name/)
+🔗 **[View Portfolio](https://dhruvamaheshwari.github.io/PepClassProject/)**
 
 ## 📁 Projects Included
 
@@ -38,7 +38,7 @@ A collection of HTML, CSS, and JavaScript projects created during my programming
 ### Class 6
 
 - **Random Number** - Number guessing game
-- **Weather App** - Check weather by city name
+- **Weather App** - Check weather by city name (uses OpenWeatherMap API)
 
 ## 🛠️ Technologies Used
 
@@ -46,6 +46,7 @@ A collection of HTML, CSS, and JavaScript projects created during my programming
 - CSS3
 - JavaScript
 - Fetch API
+- OpenWeatherMap API
 
 ## 👤 Author
 
@@ -55,14 +56,13 @@ A collection of HTML, CSS, and JavaScript projects created during my programming
 - Reg. No.: 12305846
 - GitHub: [@Dhruvamaheshwari](https://github.com/Dhruvamaheshwari)
 
-## 📝 How to Deploy on GitHub Pages
+## 📝 How to Run Locally
 
-1. Create a new repository on GitHub
-2. Push all files to the repository
-3. Go to **Settings** → **Pages**
-4. Under "Source", select **main** branch
-5. Click **Save**
-6. Your site will be live at `https://yourusername.github.io/repository-name/`
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Dhruvamaheshwari/PepClassProject.git
+   ```
+2. Open `index.html` in your browser
 
 ## 📂 Project Structure
 
