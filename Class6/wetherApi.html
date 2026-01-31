@@ -197,8 +197,17 @@
     </div>
 
     <script>
-        // API Configuration - Key is hidden in Netlify Functions
-        const API_URL = '/.netlify/functions/weather';
+
+        // API Configuration
+        // Check if running on Netlify (deployed) or locally
+        const isNetlify = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('netlify.com');
+
+        // For LOCAL testing: put your key here (remove before pushing to GitHub!)
+        const LOCAL_API_KEY = '';
+
+        // API URLs
+        const NETLIFY_URL = '/.netlify/functions/weather';
+        const DIRECT_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
         // Get HTML elements
         const cityInput = document.getElementById('cityInput');
@@ -229,8 +238,14 @@
             showLoading();
 
             try {
-                // Fetch data from Netlify Function (API key is hidden there)
-                const url = `${API_URL}?city=${encodeURIComponent(city)}`;
+                // Use Netlify function on deployed site, direct API locally
+                let url;
+                if (isNetlify) {
+                    url = `${NETLIFY_URL}?city=${encodeURIComponent(city)}`;
+                } else {
+                    url = `${DIRECT_URL}?q=${city}&appid=${LOCAL_API_KEY}&units=metric`;
+                }
+
                 const response = await fetch(url);
 
                 if (!response.ok) {
