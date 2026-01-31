@@ -197,9 +197,8 @@
     </div>
 
     <script>
-        // API Configuration
-        const API_KEY = '57b9dea7c9029726ba414508c1d76790';
-        const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
+        // API Configuration - Key is hidden in Netlify Functions
+        const API_URL = '/.netlify/functions/weather';
 
         // Get HTML elements
         const cityInput = document.getElementById('cityInput');
@@ -230,8 +229,8 @@
             showLoading();
 
             try {
-                // Fetch data from API
-                const url = `${API_URL}?q=${city}&appid=${API_KEY}&units=metric`;
+                // Fetch data from Netlify Function (API key is hidden there)
+                const url = `${API_URL}?city=${encodeURIComponent(city)}`;
                 const response = await fetch(url);
 
                 if (!response.ok) {
